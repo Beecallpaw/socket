@@ -7,6 +7,7 @@ app.get('/', (req, res) => res.sendFile(__dirname + '/index.html'))
 io.on('connection', function(socket) {
     console.log('user connected')
     socket.on('message', function(msg){
+        io.emit('message', msg)
         console.log('message:'+ msg)
     })
     socket.on('disconnect', function(){
